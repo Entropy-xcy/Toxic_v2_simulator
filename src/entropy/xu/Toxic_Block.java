@@ -1,9 +1,9 @@
 package entropy.xu;
 
-public class Toxic_Register {
+public class Toxic_Block {
     private boolean bit3, bit2, bit1, bit0;
 
-    public Toxic_Register(boolean bit3, boolean bit2, boolean bit1, boolean bit0)
+    public Toxic_Block(boolean bit3, boolean bit2, boolean bit1, boolean bit0)
     {
         this.bit0 = bit0;
         this.bit1 = bit1;
@@ -45,7 +45,7 @@ public class Toxic_Register {
         }
     }
 
-    public Toxic_Register(int bit3, int bit2, int bit1, int bit0)
+    public Toxic_Block(int bit3, int bit2, int bit1, int bit0)
     {
         this.bit0 = int2bool(bit0);
         this.bit1 = int2bool(bit1);
@@ -53,7 +53,7 @@ public class Toxic_Register {
         this.bit3 = int2bool(bit3);
     }
 
-    public Toxic_Register(String reg_bits)
+    public Toxic_Block(String reg_bits)
     {
         int bit_len = reg_bits.length();
         if (bit_len != 4){

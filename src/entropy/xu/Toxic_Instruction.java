@@ -1,7 +1,7 @@
 package entropy.xu;
 
 enum Ins_Type{
-    P0, P1, RVS, CMP, POP, DIS, PC, SWP, ADD, NAND, LS, RS, SV, LD, B1, B0;
+    P1, P11, RVS, CMP, POP, DIS, PC, SWP, ADD, NAND, LS, RS, SV, LD, B1, B0;
 }
 
 public class Toxic_Instruction {
@@ -14,10 +14,10 @@ public class Toxic_Instruction {
         switch (reg.toString())
         {
             case "0000":
-                type = Ins_Type.P0;
+                type = Ins_Type.P1;
                 break;
             case "0001":
-                type = Ins_Type.P1;
+                type = Ins_Type.P11;
                 break;
             case "0010":
                 type = Ins_Type.PC;
@@ -70,12 +70,12 @@ public class Toxic_Instruction {
     {
         switch (asm)
         {
-            case "P0":
-                type = Ins_Type.P0;
-                bits = new Toxic_Register("0000");
-                break;
             case "P1":
                 type = Ins_Type.P1;
+                bits = new Toxic_Register("0000");
+                break;
+            case "P11":
+                type = Ins_Type.P11;
                 bits = new Toxic_Register("0001");
                 break;
             case "CMP":

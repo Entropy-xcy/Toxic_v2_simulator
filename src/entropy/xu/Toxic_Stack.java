@@ -1,10 +1,24 @@
 package entropy.xu;
 
 public class Toxic_Stack {
-    private static final int STACK_LEN = 16;
-    private static final int BIT_WIDTH = 4;
+    private final int DEPTH;
 
-    public Toxic_Stack(){
+    public Toxic_Stack(int depth){
+        this.DEPTH = depth;
+    }
+
+    public void push()
+    {
+        //
+    }
+
+    public Toxic_Register pop()
+    {
+
+    }
+
+    public tos()
+    {
 
     }
 }
