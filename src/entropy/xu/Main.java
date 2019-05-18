@@ -6,12 +6,14 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Toxic_PC pc = new Toxic_PC(8);
+        Toxic_Core core = new Toxic_Core(8, 8);
+        core.loadProgram("test.asm");
+        core.step();
+        core.step();
+        core.step();
+        core.step();
+        core.step();
 
-        for(int i = 0; i < 300; i ++)
-        {
-            System.out.println(pc.toInt());
-            pc.increment();
-        }
+        core.display();
     }
 }

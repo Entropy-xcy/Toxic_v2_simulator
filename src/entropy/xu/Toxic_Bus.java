@@ -1,7 +1,7 @@
 package entropy.xu;
 
 public class Toxic_Bus extends Toxic_Stack {
-    private final int bus_width;
+    public final int bus_width;
 
     public Toxic_Bus(int bus_width)
     {

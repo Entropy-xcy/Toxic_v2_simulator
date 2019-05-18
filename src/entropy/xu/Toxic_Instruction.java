@@ -83,7 +83,7 @@ public class Toxic_Instruction extends Toxic_Block {
                 type = Ins_Type.B0;
                 bits = new Toxic_Block("1010");
                 break;
-                default: throw new IllegalArgumentException("No Corresponding Instruction");
+                default: throw new IllegalArgumentException("No Corresponding Instruction" + asm);
         }
         this.bit0 = bits.bit0;
         this.bit1 = bits.bit1;
