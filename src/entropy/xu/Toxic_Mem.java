@@ -7,9 +7,9 @@ public class Toxic_Mem {
     public static final int pc0 = 16;
 
 
-    public Toxic_Mem(int addr_block_width)
+    public Toxic_Mem(int addr_bit_width)
     {
-        this.addr_block_width = addr_block_width;
+        this.addr_block_width = addr_bit_width / 4;
         hmemory_size = (int) Math.pow(2, addr_block_width * 4);
         mem = new Toxic_Block[hmemory_size];
         for(int i = 0; i < hmemory_size; i++)
@@ -28,11 +28,11 @@ public class Toxic_Mem {
         return mem[addr];
     }
 
-    public void loadProgram(Toxic_Block[] code)
+    public void loadProgram(Toxic_Instruction[] code)
     {
         for(int i = 0; i < code.length; i ++)
         {
-            mem[pc0 + i] = code[i];
+            mem[pc0 + i] = code[i].toToxicBlock();
         }
     }
 }

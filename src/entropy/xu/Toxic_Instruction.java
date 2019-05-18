@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-enum Ins_Type{
-    P1, P11, RVS, CMP, POP, DIS, PC, SWP, ADD, NAND, LS, RS, SV, LD, B1, B0;
-}
+
+
+
 
 public class Toxic_Instruction extends Toxic_Block {
     Ins_Type type;
@@ -91,6 +91,15 @@ public class Toxic_Instruction extends Toxic_Block {
         this.bit3 = bits.bit3;
     }
 
+    public Toxic_Instruction(Toxic_Block blk)
+    {
+        type = Toxic_ISA.ISA[blk.toInt()];
+        this.bit0 = blk.bit0;
+        this.bit1 = blk.bit1;
+        this.bit2 = blk.bit2;
+        this.bit3 = blk.bit3;
+    }
+
 
     @Override
     public String toString() {
@@ -119,5 +128,10 @@ public class Toxic_Instruction extends Toxic_Block {
         }
 
         return ins;
+    }
+
+    public Toxic_Block toToxicBlock()
+    {
+        return new Toxic_Block(this.bit3, this.bit2, this.bit1, this.bit0);
     }
 }

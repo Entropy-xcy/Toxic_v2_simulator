@@ -172,10 +172,43 @@ public class Toxic_Block {
         return new Toxic_Block(r3, r2, r1, r0);
     }
 
-    public Toxic_Block ls();
+    public Toxic_Block ls_s()
+    {
+        return new Toxic_Block(this.bit2, this.bit1, this.bit0, false);
+    }
 
-    public Toxic_Block rs();
+    public boolean ls_c()
+    {
+        return this.bit3;
+    }
 
-    public boolean ls_carry();
-    public boolean rs_carry();
+    public Toxic_Block rs_s()
+    {
+        return new Toxic_Block(false, this.bit3, this.bit2, this.bit1);
+    }
+
+    public boolean rs_c()
+    {
+        return this.bit0;
+    }
+
+    public boolean isGreaterThan(Toxic_Block blk)
+    {
+        return this.toInt() > blk.toInt();
+    }
+
+    public boolean isEqualTo(Toxic_Block blk)
+    {
+        return this.toInt() == blk.toInt();
+    }
+
+    public boolean isLessThan(Toxic_Block blk)
+    {
+        return this.toInt() < blk.toInt();
+    }
+
+    public boolean getLastBit()
+    {
+        return this.bit0;
+    }
 }

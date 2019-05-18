@@ -6,10 +6,12 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Toxic_Instruction[] blks = Toxic_Instruction.loadAsm("test.asm");
-        for(int i = 0; i < blks.length; i++)
+        Toxic_PC pc = new Toxic_PC(8);
+
+        for(int i = 0; i < 300; i ++)
         {
-            System.out.println(blks[i].getBits());
+            System.out.println(pc.toInt());
+            pc.increment();
         }
     }
 }
