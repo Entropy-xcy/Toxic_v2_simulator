@@ -1,73 +1,22 @@
 package entropy.xu;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 enum Ins_Type{
     P1, P11, RVS, CMP, POP, DIS, PC, SWP, ADD, NAND, LS, RS, SV, LD, B1, B0;
 }
 
-public class Toxic_Instruction {
-    Toxic_Block bits;
+public class Toxic_Instruction extends Toxic_Block {
     Ins_Type type;
-
-    public Toxic_Instruction(Toxic_Block reg)
-    {
-        bits = reg;
-        switch (reg.toString())
-        {
-            case "0000":
-                type = Ins_Type.P1;
-                break;
-            case "0001":
-                type = Ins_Type.P11;
-                break;
-            case "0010":
-                type = Ins_Type.PC;
-                break;
-            case "0011":
-                type = Ins_Type.CMP;
-                break;
-            case "0100":
-                type = Ins_Type.POP;
-                break;
-            case "0101":
-                type = Ins_Type.DIS;
-                break;
-            case "0111":
-                type = Ins_Type.SWP;
-                break;
-            case "0110":
-                type = Ins_Type.RVS;
-                break;
-            case "1100":
-                type = Ins_Type.ADD;
-                break;
-            case "1101":
-                type = Ins_Type.NAND;
-                break;
-            case "1111":
-                type = Ins_Type.LS;
-                break;
-            case "1110":
-                type = Ins_Type.RS;
-                break;
-            case "1000":
-                type = Ins_Type.SV;
-                break;
-            case "1001":
-                type = Ins_Type.LD;
-                break;
-            case "1011":
-                type = Ins_Type.B1;
-                break;
-            case "1010":
-                type = Ins_Type.B0;
-                break;
-                default:
-                    throw new IllegalArgumentException("Invalid Instruction!");
-        }
-    }
 
     public Toxic_Instruction(String asm)
     {
+        Toxic_Block bits = new Toxic_Block();
         switch (asm)
         {
             case "P1":
@@ -136,11 +85,39 @@ public class Toxic_Instruction {
                 break;
                 default: throw new IllegalArgumentException("No Corresponding Instruction");
         }
+        this.bit0 = bits.bit0;
+        this.bit1 = bits.bit1;
+        this.bit2 = bits.bit2;
+        this.bit3 = bits.bit3;
     }
 
 
     @Override
     public String toString() {
         return type.toString();
+    }
+
+    public String getBits()
+    {
+        return super.toString();
+    }
+
+    public static Toxic_Instruction[] loadAsm(String filename) throws IOException {
+        List<Toxic_Instruction> code_lst = new ArrayList<Toxic_Instruction>();
+        File file = new File(filename);
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        String st;
+        while ((st = br.readLine()) != null)
+            code_lst.add(new Toxic_Instruction(st));
+
+        Toxic_Instruction[] ins = new Toxic_Instruction[code_lst.size()];
+        for(int i = 0; i < code_lst.size(); i++)
+        {
+            ins[i] = code_lst.get(i);
+        }
+
+        return ins;
     }
 }

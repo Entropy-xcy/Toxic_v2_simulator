@@ -37,7 +37,7 @@ public class Toxic_Stack {
 
     public Toxic_Block pop()
     {
-        Toxic_Block ret = this.tos();
+        Toxic_Block ret = this.tos().clone();
         tos_index = Math.floorMod(tos_index - 1, DEPTH);
         return ret;
     }
